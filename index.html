@@ -1,6 +1,248 @@
-<html>
-  <title>这是一个测试页面</title>
-  <body>
-    <h1>这是一个测试页面</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI图像魔术师</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #f0f3f6;
+            --text-color: #2c3e50;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .auth-buttons {
+            margin-right: 20px;
+        }
+
+        .auth-buttons button {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 5px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .auth-buttons button:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .main-content {
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        .prompt-input {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .prompt-input textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        .generate-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .generate-btn:hover {
+            background-color: #27ae60;
+        }
+
+        .generated-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .generated-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .recommended-works {
+            margin-top: 3rem;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 1rem;
+        }
+
+        .image-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .image-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .faq {
+            margin-top: 3rem;
+        }
+
+        .faq h2 {
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="AI图像魔术师">
+            <h1>AI图像魔术师</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#works">作品</a></li>
+                <li><a href="#faq">常见问题</a></li>
+                <li><a href="price.html">价格</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button>注册</button>
+            <button>登录</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="home" class="main-content">
+            <div class="prompt-input">
+                <h2>输入您的创意</h2>
+                <textarea placeholder="描述您想要生成的图片..."></textarea>
+                <button class="generate-btn">生成图片</button>
+            </div>
+            <div class="generated-image">
+                <h2>生成的图片</h2>
+                <img src="https://via.placeholder.com/400" alt="生成的图片">
+            </div>
+        </section>
+
+        <section id="works" class="recommended-works">
+            <h2>推荐作品</h2>
+            <div class="image-gallery">
+                <div class="image-item"><img src="https://via.placeholder.com/200" alt="推荐作品"></div>
+                <div class="image-item"><img src="https://via.placeholder.com/200" alt="推荐作品"></div>
+                <div class="image-item"><img src="https://via.placeholder.com/200" alt="推荐作品"></div>
+                <div class="image-item"><img src="https://via.placeholder.com/200" alt="推荐作品"></div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq">
+            <h2>常见问题</h2>
+            <div class="faq-item">
+                <h3>如何使用AI图像生成器？</h3>
+                <p>只需在输入框中输入您想要的图像描述，然后点击"生成图片"按钮即可。</p>
+            </div>
+            <div class="faq-item">
+                <h3>生成的图片版权归属谁？</h3>
+                <p>生成的图片版权归您所有，您可以自由使用这些图片。</p>
+            </div>
+            <!-- 更多FAQ项... -->
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 AI图像魔术师. 保留所有权利。</p>
+    </footer>
+</body>
 </html>
